@@ -1,0 +1,4 @@
+### findById
+
+GET http://localhost:8080/flashcard/1 HTTP/1.1
+

@@ -4,7 +4,7 @@ use capstone;
 
 CREATE TABLE flashcard_set(
 	flashcard_set_id int auto_increment primary key,
-    title varchar(255)
+    title varchar(255) unique
 );
 
 CREATE TABLE flashcard(

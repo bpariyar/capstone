@@ -5,3 +5,16 @@ GET http://localhost:8080/flashcard/1 HTTP/1.1
 ### findByFlashcardSetId flashcard set
 
 GET http://localhost:8080/flashcard/set/1 HTTP/1.1
+
+### add a flashcard
+
+POST http://localhost:8080/flashcard HTTP/1.1
+Content-Type: application/json
+
+    {
+        "flashcardSet": {
+            "flashcardSetId": 2
+        },
+        "frontData": "White",
+        "backData": "Blanco"
+    }

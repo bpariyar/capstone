@@ -10,8 +10,9 @@ public class Flashcard {
 
     public Flashcard() {}
 
-    public Flashcard(int flashcardId, String frontData, String backData) {
+    public Flashcard(int flashcardId, FlashcardSet flashcardSet, String frontData, String backData) {
         this.flashcardId = flashcardId;
+        this.flashcardSet = flashcardSet;
         this.frontData = frontData;
         this.backData = backData;
     }

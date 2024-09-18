@@ -8,4 +8,6 @@ public interface FlashcardRepository {
     Flashcard findById(int flashcardId);
 
     List<Flashcard> findByFlashcardSetId(int flashcardSetId);
+
+    Flashcard add(Flashcard flashcard);
 }

@@ -49,4 +49,10 @@ public class FlashcardSetJdbcTemplateRepository implements FlashcardSetRepositor
 
         return flashcardSet;
     }
+
+    @Override
+    public boolean deleteByFlashcardSetId(int flashcardSetId) {
+        final String sql = "delete from flashcard_set where flashcard_set_id = ?";
+        return jdbcTemplate.update(sql, flashcardSetId) > 0;
+    }
 }

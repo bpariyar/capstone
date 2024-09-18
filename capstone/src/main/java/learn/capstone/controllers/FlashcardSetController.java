@@ -38,6 +38,12 @@ public class FlashcardSetController {
         return new ResponseEntity<>(result.getPayload(), getStatus(result, HttpStatus.CREATED));
     }
 
+    @DeleteMapping("/delete/{flashcardSetId}")
+    public ResponseEntity<Void> deleteByFlashcardSetId(@PathVariable int flashcardSetId) {
+        Result<FlashcardSet> result = service.deleteByFlashcardSetId(flashcardSetId);
+        return new ResponseEntity<>(getStatus(result, HttpStatus.NO_CONTENT));
+    }
+
     private HttpStatus getStatus(Result<FlashcardSet> result, HttpStatus statusDefault) {
         switch (result.getStatus()) {
             case INVALID:

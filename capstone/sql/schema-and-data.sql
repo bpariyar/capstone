@@ -15,6 +15,7 @@ CREATE TABLE flashcard(
 	constraint fk_flashcard_id_flashcard_set_id
 		foreign key (flashcard_set_id)
 		references flashcard_set(flashcard_set_id)
+		on delete cascade
 );
 
 -- data

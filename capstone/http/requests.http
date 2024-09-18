@@ -6,6 +6,10 @@ GET http://localhost:8080/flashcard/1 HTTP/1.1
 
 GET http://localhost:8080/flashcard/set/1 HTTP/1.1
 
+### findAll flashcard sets
+
+GET http://localhost:8080/flashcard/set/all HTTP/1.1
+
 ### add a flashcard
 
 POST http://localhost:8080/flashcard HTTP/1.1

@@ -1,7 +1,10 @@
 package learn.capstone.domain;
 
 import learn.capstone.data.FlashcardSetRepository;
+import learn.capstone.models.FlashcardSet;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class FlashcardSetService {
@@ -12,6 +15,9 @@ public class FlashcardSetService {
     }
 
     //TODO: find all flashcard sets
+    public List<FlashcardSet> findAll(){
+        return flashcardSetRepository.findAll();
+    }
 
     //TODO: add a flashcard set
 

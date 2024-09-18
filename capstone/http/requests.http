@@ -1,4 +1,7 @@
-### findById
+### findById flashcard
 
 GET http://localhost:8080/flashcard/1 HTTP/1.1
 
+### findByFlashcardSetId flashcard set
+
+GET http://localhost:8080/flashcard/set/1 HTTP/1.1

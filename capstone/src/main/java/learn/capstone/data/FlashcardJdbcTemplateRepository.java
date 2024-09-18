@@ -4,6 +4,8 @@ import learn.capstone.models.Flashcard;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class FlashcardJdbcTemplateRepository implements FlashcardRepository {
     private final JdbcTemplate jdbcTemplate;
@@ -22,5 +24,16 @@ public class FlashcardJdbcTemplateRepository implements FlashcardRepository {
 
         return jdbcTemplate.query(sql, new FlashcardMapper(), flashcardId)
                 .stream().findFirst().orElse(null);
+    }
+
+    @Override
+    public List<Flashcard> findByFlashcardSetId(int flashcardSetId) {
+        final String sql = "select f.flashcard_id, f.front_data, f.back_data, " +
+                "fs.title, fs.flashcard_set_id "
+                + "from flashcard f "
+                + "inner join flashcard_set fs on f.flashcard_set_id = fs.flashcard_set_id "
+                + "where fs.flashcard_set_id = ?;";
+
+        return jdbcTemplate.query(sql, new FlashcardMapper(), flashcardSetId);
     }
 }

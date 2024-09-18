@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/flashcard")
 public class FlashcardController {
@@ -25,4 +27,10 @@ public class FlashcardController {
         }
         return ResponseEntity.ok(flashcard);
     }
+
+    @GetMapping("/set/{flashcardSetId}")
+    public List<Flashcard> findByFlashcardSetId(@PathVariable int flashcardSetId) {
+       return service.findByFlashcardSetId(flashcardSetId);
+    }
+
 }

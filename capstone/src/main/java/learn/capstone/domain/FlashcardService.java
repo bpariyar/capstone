@@ -5,6 +5,8 @@ import learn.capstone.data.FlashcardSetRepository;
 import learn.capstone.models.Flashcard;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class FlashcardService {
     private final FlashcardRepository flashcardRepository;
@@ -19,7 +21,9 @@ public class FlashcardService {
         return flashcardRepository.findById(flashcardId);
     }
 
-    //TODO: find by flashcard set id (?)
+    public List<Flashcard> findByFlashcardSetId(int flashcardSetId) {
+        return flashcardRepository.findByFlashcardSetId(flashcardSetId);
+    }
 
     //TODO: Add flashcard to flashcard set
 

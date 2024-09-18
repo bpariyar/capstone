@@ -18,6 +18,10 @@ public class FlashcardSetService {
         return flashcardSetRepository.findAll();
     }
 
+    public FlashcardSet findByFlashcardSetId(int flashcardSetId) {
+        return flashcardSetRepository.findByFlashcardSetId(flashcardSetId);
+    }
+
     //TODO: add a flashcard set
 
     //TODO: update a flashcard set

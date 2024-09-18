@@ -3,7 +3,6 @@ package learn.capstone.controllers;
 import learn.capstone.domain.FlashcardService;
 import learn.capstone.domain.Result;
 import learn.capstone.models.Flashcard;
-import learn.capstone.models.FlashcardSet;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +27,7 @@ public class FlashcardController {
         return ResponseEntity.ok(flashcard);
     }
 
-    @GetMapping("/set/{flashcardSetId}")
+    @GetMapping("/cards/{flashcardSetId}")
     public List<Flashcard> findByFlashcardSetId(@PathVariable int flashcardSetId) {
        return service.findByFlashcardSetId(flashcardSetId);
     }

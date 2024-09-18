@@ -17,8 +17,8 @@ public class FlashcardService {
         this.flashcardSetRepository = flashcardSetRepository;
     }
 
-    public Flashcard findById(int flashcardId) {
-        return flashcardRepository.findById(flashcardId);
+    public Flashcard findByFlashcardId(int flashcardId) {
+        return flashcardRepository.findByFlashcardId(flashcardId);
     }
 
     public List<Flashcard> findByFlashcardSetId(int flashcardSetId) {
@@ -67,9 +67,13 @@ public class FlashcardService {
         return result;
     }
 
-    //TODO: Add flashcard to flashcard set
+    public Result<Flashcard> deleteByFlashcardId(int flashcardId) {
+        Result<Flashcard> result = new Result<>();
+        boolean deleted = flashcardRepository.deleteByFlashcardId(flashcardId);
+        if (!deleted) {
+            result.addMessage(Status.NOT_FOUND, "Flashcard id #" + flashcardId + " not found.");
+        }
+        return result;
+    }
 
-    //TODO: Update flashcard
-
-    //TODO: Delete a flashcard
 }

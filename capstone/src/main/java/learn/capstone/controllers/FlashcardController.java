@@ -20,8 +20,8 @@ public class FlashcardController {
     }
 
     @GetMapping("/{flashcardId}")
-    public ResponseEntity<Flashcard> findById(@PathVariable int flashcardId) {
-        Flashcard flashcard = service.findById(flashcardId);
+    public ResponseEntity<Flashcard> findByFlashcardId(@PathVariable int flashcardId) {
+        Flashcard flashcard = service.findByFlashcardId(flashcardId);
         if (flashcard == null) {
             return ResponseEntity.notFound().build();
         }
@@ -45,6 +45,12 @@ public class FlashcardController {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         Result<Flashcard> result = service.update(flashcard);
+        return new ResponseEntity<>(getStatus(result, HttpStatus.NO_CONTENT));
+    }
+
+    @DeleteMapping("/delete/{flashcardId}")
+    public ResponseEntity<Void> deleteByFlashcardId(@PathVariable int flashcardId) {
+        Result<Flashcard> result = service.deleteByFlashcardId(flashcardId);
         return new ResponseEntity<>(getStatus(result, HttpStatus.NO_CONTENT));
     }
 

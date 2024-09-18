@@ -1,9 +1,14 @@
 package learn.capstone.data;
 
+import learn.capstone.domain.Result;
 import learn.capstone.models.Flashcard;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
@@ -18,7 +23,7 @@ public class FlashcardJdbcTemplateRepository implements FlashcardRepository {
     }
 
     @Override
-    public Flashcard findById(int flashcardId) {
+    public Flashcard findByFlashcardId(int flashcardId) {
         final String sql = "select f.flashcard_id, f.front_data, f.back_data, " +
                 "fs.title, fs.flashcard_set_id "
                 + "from flashcard f "
@@ -74,5 +79,10 @@ public class FlashcardJdbcTemplateRepository implements FlashcardRepository {
                 flashcard.getFlashcardId()) > 0;
     }
 
+    @Override
+    public boolean deleteByFlashcardId(int flashcardId) {
+        final String sql = "delete from flashcard where flashcard_id = ?";
+        return jdbcTemplate.update(sql, flashcardId) > 0;
+    }
 
 }

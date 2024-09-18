@@ -54,6 +54,19 @@ public class FlashcardService {
 
     }
 
+    public Result<Flashcard> update(Flashcard flashcard) {
+        Result<Flashcard> result = validate(flashcard);
+        if (result.getStatus() != Status.SUCCESS) {
+            return result;
+        }
+
+        if (!flashcardRepository.update(flashcard)) {
+            result.addMessage(Status.NOT_FOUND, "Flashcard id #" + flashcard.getFlashcardId() + " not found.");
+        }
+
+        return result;
+    }
+
     //TODO: Add flashcard to flashcard set
 
     //TODO: Update flashcard

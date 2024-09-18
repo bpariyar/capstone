@@ -5,7 +5,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
@@ -63,6 +62,16 @@ public class FlashcardJdbcTemplateRepository implements FlashcardRepository {
         flashcard.setFlashcardId(keyHolder.getKey().intValue());
 
         return flashcard;
+    }
+
+    @Override
+    public boolean update(Flashcard flashcard) {
+        final String sql = "update flashcard set front_data = ?, back_data = ? where flashcard_id = ?;";
+
+        return jdbcTemplate.update(sql,
+                flashcard.getFrontData(),
+                flashcard.getBackData(),
+                flashcard.getFlashcardId()) > 0;
     }
 
 

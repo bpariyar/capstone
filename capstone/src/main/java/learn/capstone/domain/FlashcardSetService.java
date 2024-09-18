@@ -14,7 +14,6 @@ public class FlashcardSetService {
         this.flashcardSetRepository = flashcardSetRepository;
     }
 
-    //TODO: find all flashcard sets
     public List<FlashcardSet> findAll(){
         return flashcardSetRepository.findAll();
     }

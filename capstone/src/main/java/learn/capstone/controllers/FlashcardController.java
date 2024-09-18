@@ -3,6 +3,7 @@ package learn.capstone.controllers;
 import learn.capstone.domain.FlashcardService;
 import learn.capstone.domain.Result;
 import learn.capstone.models.Flashcard;
+import learn.capstone.models.FlashcardSet;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,10 +33,19 @@ public class FlashcardController {
        return service.findByFlashcardSetId(flashcardSetId);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Flashcard> add(@RequestBody Flashcard flashcard) {
         Result<Flashcard> result = service.add(flashcard);
         return new ResponseEntity<>(result.getPayload(), getStatus(result, HttpStatus.CREATED));
+    }
+
+    @PutMapping("/update/{flashcardId}")
+    public ResponseEntity<Void> update(@PathVariable int flashcardId, @RequestBody Flashcard flashcard) {
+        if (flashcard != null && flashcard.getFlashcardId() != flashcardId) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        Result<Flashcard> result = service.update(flashcard);
+        return new ResponseEntity<>(getStatus(result, HttpStatus.NO_CONTENT));
     }
 
     private HttpStatus getStatus(Result<Flashcard> result, HttpStatus statusDefault) {

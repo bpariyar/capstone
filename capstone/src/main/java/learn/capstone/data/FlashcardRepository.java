@@ -10,4 +10,6 @@ public interface FlashcardRepository {
     List<Flashcard> findByFlashcardSetId(int flashcardSetId);
 
     Flashcard add(Flashcard flashcard);
+
+    boolean update(Flashcard flashcard);
 }

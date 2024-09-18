@@ -1,6 +1,7 @@
 package learn.capstone.domain;
 
 import learn.capstone.data.FlashcardSetRepository;
+import learn.capstone.models.Flashcard;
 import learn.capstone.models.FlashcardSet;
 import org.springframework.stereotype.Service;
 
@@ -22,9 +23,36 @@ public class FlashcardSetService {
         return flashcardSetRepository.findByFlashcardSetId(flashcardSetId);
     }
 
-    //TODO: add a flashcard set
+    public Result<FlashcardSet> add(FlashcardSet flashcardSet) {
+            Result<FlashcardSet> result = validate(flashcardSet);
+            if (result.getStatus() != Status.SUCCESS) {
+                return result;
+            }
 
+            FlashcardSet inserted = flashcardSetRepository.add(flashcardSet);
+            if (inserted == null) {
+                result.addMessage(Status.INVALID, "Failed to add flashcard");
+            } else {
+                result.setPayload(inserted);
+            }
+
+            return result;
+        }
+
+    //TODO: more in this validation
+    private Result<FlashcardSet> validate(FlashcardSet flashcardSet) {
+        Result<FlashcardSet> result = new Result<>();
+
+        if (flashcardSet == null) {
+            result.addMessage(Status.INVALID, "Flashcard set cannot be null.");
+            return result;
+        }
+
+        return result;
+    }
     //TODO: update a flashcard set
 
     //TODO: Delete a flashcard set
-}
+    }
+
+

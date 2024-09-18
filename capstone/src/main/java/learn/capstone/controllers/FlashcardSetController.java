@@ -1,12 +1,11 @@
 package learn.capstone.controllers;
 
 import learn.capstone.domain.FlashcardSetService;
+import learn.capstone.domain.Result;
 import learn.capstone.models.FlashcardSet;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,5 +30,23 @@ public class FlashcardSetController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(flashcardSet);
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<FlashcardSet> add(@RequestBody FlashcardSet flashcardSet) {
+        Result<FlashcardSet> result = service.add(flashcardSet);
+        return new ResponseEntity<>(result.getPayload(), getStatus(result, HttpStatus.CREATED));
+    }
+
+    private HttpStatus getStatus(Result<FlashcardSet> result, HttpStatus statusDefault) {
+        switch (result.getStatus()) {
+            case INVALID:
+                return HttpStatus.PRECONDITION_FAILED;
+            case DUPLICATE:
+                return HttpStatus.FORBIDDEN;
+            case NOT_FOUND:
+                return HttpStatus.NOT_FOUND;
+        }
+        return statusDefault;
     }
 }

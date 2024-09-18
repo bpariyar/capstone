@@ -51,7 +51,6 @@ public class FlashcardService {
         }
 
         return result;
-
     }
 
     public Result<Flashcard> update(Flashcard flashcard) {

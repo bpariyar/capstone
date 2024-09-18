@@ -48,3 +48,13 @@ GET {{url}}/set/all HTTP/1.1
 ### find flashcard set by flashcard set id
 
 GET http://localhost:8080/flashcard/set/1 HTTP/1.1
+
+### add a flashcard set
+
+POST http://localhost:8080/flashcard/set/add HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "US Citizenship"
+}
+

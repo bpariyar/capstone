@@ -2,6 +2,7 @@ package learn.capstone.controllers;
 
 import learn.capstone.domain.FlashcardSetService;
 import learn.capstone.domain.Result;
+import learn.capstone.models.Flashcard;
 import learn.capstone.models.FlashcardSet;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +37,15 @@ public class FlashcardSetController {
     public ResponseEntity<FlashcardSet> add(@RequestBody FlashcardSet flashcardSet) {
         Result<FlashcardSet> result = service.add(flashcardSet);
         return new ResponseEntity<>(result.getPayload(), getStatus(result, HttpStatus.CREATED));
+    }
+
+    @PutMapping("/update/{flashcardSetId}")
+    public ResponseEntity<Void> update(@PathVariable int flashcardSetId, @RequestBody FlashcardSet flashcardSet) {
+        if (flashcardSet != null && flashcardSet.getFlashcardSetId() != flashcardSetId) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        Result<FlashcardSet> result = service.update(flashcardSet);
+        return new ResponseEntity<>(getStatus(result, HttpStatus.NO_CONTENT));
     }
 
     @DeleteMapping("/delete/{flashcardSetId}")

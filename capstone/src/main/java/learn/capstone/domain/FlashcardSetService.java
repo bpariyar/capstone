@@ -1,6 +1,7 @@
 package learn.capstone.domain;
 
 import learn.capstone.data.FlashcardSetRepository;
+import learn.capstone.models.Flashcard;
 import learn.capstone.models.FlashcardSet;
 import org.springframework.stereotype.Service;
 
@@ -56,6 +57,19 @@ public class FlashcardSetService {
         if (!deleted) {
             result.addMessage(Status.NOT_FOUND, "Flashcard set id #" + flashcardSetId + " not found.");
         }
+        return result;
+    }
+
+    public Result<FlashcardSet> update(FlashcardSet flashcardSet) {
+        Result<FlashcardSet> result = validate(flashcardSet);
+        if (result.getStatus() != Status.SUCCESS) {
+            return result;
+        }
+
+        if (!flashcardSetRepository.update(flashcardSet)) {
+            result.addMessage(Status.NOT_FOUND, "Flashcard set id #" + flashcardSet.getFlashcardSetId() + " not found.");
+        }
+
         return result;
     }
     //TODO: update a flashcard set

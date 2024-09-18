@@ -12,4 +12,6 @@ public interface FlashcardSetRepository {
     FlashcardSet add(FlashcardSet flashcardSet);
 
     boolean deleteByFlashcardSetId(int flashcardSetId);
+
+    boolean update(FlashcardSet flashcardSet);
 }

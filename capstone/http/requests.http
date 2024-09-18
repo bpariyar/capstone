@@ -62,3 +62,12 @@ Content-Type: application/json
 
 DELETE {{url}}/set/delete/1 HTTP/1.1
 
+### update a flashcard set
+
+PUT {{url}}/set/update/2 HTTP/1.1
+Content-Type: application/json
+
+{
+    "flashcardSetId": 2,
+    "title": "Spanish Colors Practice"
+}

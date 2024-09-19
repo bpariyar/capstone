@@ -2,7 +2,6 @@ package learn.capstone.controllers;
 
 import learn.capstone.domain.FlashcardSetService;
 import learn.capstone.domain.Result;
-import learn.capstone.models.Flashcard;
 import learn.capstone.models.FlashcardSet;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

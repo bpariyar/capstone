@@ -6,7 +6,7 @@ GET {{url}}/1 HTTP/1.1
 
 ### findByFlashcardSetId find flashcards by flashcard set id
 
-GET {{url}}/cards/1 HTTP/1.1
+GET {{url}}/cards/2 HTTP/1.1
 
 ### add a flashcard
 

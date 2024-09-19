@@ -41,18 +41,6 @@ public class FlashcardService {
         return result;
     }
 
-    //TODO: more in this validation
-    private Result<Flashcard> validate(Flashcard flashcard) {
-        Result<Flashcard> result = new Result<>();
-
-        if (flashcard == null) {
-            result.addMessage(Status.INVALID, "Flashcard cannot be null.");
-            return result;
-        }
-
-        return result;
-    }
-
     public Result<Flashcard> update(Flashcard flashcard) {
         Result<Flashcard> result = validate(flashcard);
         if (result.getStatus() != Status.SUCCESS) {
@@ -73,6 +61,37 @@ public class FlashcardService {
             result.addMessage(Status.NOT_FOUND, "Flashcard id #" + flashcardId + " not found.");
         }
         return result;
+    }
+
+    private Result<Flashcard> validate(Flashcard flashcard) {
+        Result<Flashcard> result = new Result<>();
+
+        if (flashcard == null) {
+            result.addMessage(Status.INVALID, "Flashcard cannot be null.");
+            return result;
+        }
+
+        if (isEmptyOrNull(flashcard.getFrontData())) {
+            result.addMessage(Status.INVALID, "Flashcard front data must have an input.");
+            return result;
+        }
+
+        if (isEmptyOrNull(flashcard.getBackData())) {
+            result.addMessage(Status.INVALID, "Flashcard back data must have an input.");
+            return result;
+        }
+
+        return result;
+    }
+
+    private boolean isEmptyOrNull(String input) {
+        if(input == null) {
+            return true;
+        }
+        if(input.isEmpty() || input.isBlank()) {
+            return true;
+        }
+        return false;
     }
 
 }

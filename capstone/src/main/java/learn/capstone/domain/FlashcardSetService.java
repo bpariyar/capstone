@@ -1,7 +1,6 @@
 package learn.capstone.domain;
 
 import learn.capstone.data.FlashcardSetRepository;
-import learn.capstone.models.Flashcard;
 import learn.capstone.models.FlashcardSet;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +14,7 @@ public class FlashcardSetService {
         this.flashcardSetRepository = flashcardSetRepository;
     }
 
-    public List<FlashcardSet> findAll(){
+    public List<FlashcardSet> findAll() {
         return flashcardSetRepository.findAll();
     }
 
@@ -24,28 +23,16 @@ public class FlashcardSetService {
     }
 
     public Result<FlashcardSet> add(FlashcardSet flashcardSet) {
-            Result<FlashcardSet> result = validate(flashcardSet);
-            if (result.getStatus() != Status.SUCCESS) {
-                return result;
-            }
-
-            FlashcardSet inserted = flashcardSetRepository.add(flashcardSet);
-            if (inserted == null) {
-                result.addMessage(Status.INVALID, "Failed to add flashcard");
-            } else {
-                result.setPayload(inserted);
-            }
-
+        Result<FlashcardSet> result = validate(flashcardSet);
+        if (result.getStatus() != Status.SUCCESS) {
             return result;
         }
 
-    //TODO: more in this validation
-    private Result<FlashcardSet> validate(FlashcardSet flashcardSet) {
-        Result<FlashcardSet> result = new Result<>();
-
-        if (flashcardSet == null) {
-            result.addMessage(Status.INVALID, "Flashcard set cannot be null.");
-            return result;
+        FlashcardSet inserted = flashcardSetRepository.add(flashcardSet);
+        if (inserted == null) {
+            result.addMessage(Status.INVALID, "Failed to add flashcard");
+        } else {
+            result.setPayload(inserted);
         }
 
         return result;
@@ -72,8 +59,41 @@ public class FlashcardSetService {
 
         return result;
     }
-    //TODO: update a flashcard set
 
+    private Result<FlashcardSet> validate(FlashcardSet flashcardSet) {
+        Result<FlashcardSet> result = new Result<>();
+        List<FlashcardSet> all = findAll();
+
+        if (flashcardSet == null) {
+            result.addMessage(Status.INVALID, "Flashcard set cannot be null.");
+            return result;
+        }
+
+        for(FlashcardSet fs : all) {
+            if(fs.getTitle().equals(flashcardSet.getTitle())) {
+                result.addMessage(Status.INVALID, "Flashcard set already exists with that name.");
+                return result;
+            }
+        }
+
+        if(isEmptyOrNull(flashcardSet.getTitle())) {
+            result.addMessage(Status.INVALID, "Flashcard set title must have an input.");
+            return result;
+        }
+
+        return result;
     }
+
+    private boolean isEmptyOrNull(String input) {
+        if(input == null) {
+            return true;
+        }
+        if(input.isEmpty() || input.isBlank()) {
+            return true;
+        }
+        return false;
+    }
+
+}
 
 

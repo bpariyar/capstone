@@ -30,7 +30,7 @@ public class FlashcardSetService {
 
         FlashcardSet inserted = flashcardSetRepository.add(flashcardSet);
         if (inserted == null) {
-            result.addMessage(Status.INVALID, "Failed to add flashcard");
+            result.addMessage(Status.INVALID, "Failed to add flashcard set");
         } else {
             result.setPayload(inserted);
         }

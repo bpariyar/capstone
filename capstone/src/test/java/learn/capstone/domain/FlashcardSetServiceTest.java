@@ -1,6 +1,7 @@
 package learn.capstone.domain;
 
 import learn.capstone.data.FlashcardSetRepository;
+import learn.capstone.models.Flashcard;
 import learn.capstone.models.FlashcardSet;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,6 +79,44 @@ public class FlashcardSetServiceTest {
         assertFalse(result.isSuccess());
         assertEquals(1, result.getMessages().size());
         assertEquals("Failed to add flashcard set", result.getMessages().get(0));
+    }
+
+    @Test
+    void shouldUpdateValidFlashcardSetData() {
+        FlashcardSet flashcardSet = new FlashcardSet(1, "Test Title");
+        service.add(flashcardSet);
+        FlashcardSet updatedSet = new FlashcardSet(1, "Updated title");
+        when(repository.update(updatedSet)).thenReturn(true);
+        Result<FlashcardSet> result = service.update(updatedSet);
+        assertTrue(result.isSuccess());
+    }
+
+    @Test
+    void shouldNotUpdateWithBlankData() {
+        FlashcardSet flashcardSet = new FlashcardSet(1, "Test Title");
+        service.add(flashcardSet);
+        FlashcardSet updatedSet = new FlashcardSet(1, " ");
+        Result<FlashcardSet> result = service.update(updatedSet);
+        assertFalse(result.isSuccess());
+        assertEquals(1, result.getMessages().size());
+        assertEquals("Flashcard set title must have an input.", result.getMessages().get(0));
+    }
+
+    @Test
+    void shouldNotUpdateWithNullData() {
+        FlashcardSet flashcardSet = new FlashcardSet(1, "Test Title");
+        service.add(flashcardSet);
+        FlashcardSet updatedSet = new FlashcardSet(1, null);
+        Result<FlashcardSet> result = service.update(updatedSet);
+        assertFalse(result.isSuccess());
+        assertEquals(1, result.getMessages().size());
+        assertEquals("Flashcard set title must have an input.", result.getMessages().get(0));
+    }
+
+    @Test
+    void shouldNotDeleteNonExistent() {
+        Result<FlashcardSet> result = service.deleteByFlashcardSetId(100);
+        assertFalse(result.isSuccess());
     }
 
 }

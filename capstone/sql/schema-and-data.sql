@@ -18,7 +18,7 @@ CREATE TABLE flashcard(
 		on delete cascade
 );
 
--- data
+
 insert into flashcard_set(flashcard_set_id, title) values 
 (1, "World History Midterm"),
 (2, "Spanish - Colors");

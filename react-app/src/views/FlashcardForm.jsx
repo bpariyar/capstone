@@ -1,16 +1,20 @@
 import { Link, useNavigate, useParams, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-const INITIAL_FLASHCARD = {
-    flashcardId: 0,
-    flashcardSet: {
-        flashcardSetId: 2
-    },
-    frontData: '',
-    backData: '',
-};
 
 export default function FlashcardForm() {
+    const pathname = window.location.pathname;
+    var segment = pathname.substring(pathname.lastIndexOf('/') + 1);
+
+    const INITIAL_FLASHCARD = {
+        flashcardId: 0,
+        flashcardSet: {
+            flashcardSetId: segment,
+        },
+        frontData: '',
+        backData: '',
+    };
+
     const [flashcard, setFlashcard] = useState(INITIAL_FLASHCARD);
     const navigate = useNavigate();
     const { flashcardId } = useParams();

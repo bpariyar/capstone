@@ -9,7 +9,7 @@ export default function Flashcards() {
 
     let navigate = useNavigate();
     const routeChange = () => {
-        let path = '/add';
+        let path = '/add/' + segment;
         navigate(path);
     }
 

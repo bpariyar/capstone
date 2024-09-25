@@ -17,11 +17,10 @@ function App() {
                 <Route path='/' element={<Home />} />
                 <Route path='/sets' element={<Sets />} />
                 <Route path={'/flashcard/cards/:flashcardSetId'} element={<Flashcards />}/>
-                <Route path={'/add'} element={<FlashcardForm />}/>
                 <Route path={'/sets/add'} element={<SetForm />}/>
                 <Route path={'/sets/update/:flashcardSetId'} element={<SetForm />}/>
                 <Route path={'/sets/delete/:flashcardSetId'} element={<ConfirmDeleteSet />}/>
-                <Route path={'/add'} element={<FlashcardForm />}/>
+                <Route path={'/add/:flashcardSetId'} element={<FlashcardForm />}/>
                 <Route path={'/update/:flashcardId'} element={<FlashcardForm />}/>
                 <Route path={'/delete/:flashcardId'} element={<ConfirmDeleteFlashcard />}/>
             </Routes>

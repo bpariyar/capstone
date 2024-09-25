@@ -36,7 +36,6 @@ export default function FlashcardForm() {
         const updatedFlashcard = { ...flashcard };
         updatedFlashcard[event.target.name] = event.target.value;
         setFlashcard(updatedFlashcard);
-        console.log(updatedFlashcard);
     }
 
     function doCreate() {

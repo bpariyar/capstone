@@ -29,7 +29,6 @@ export default function SetForm() {
         const updatedSet = { ...set };
         updatedSet[event.target.name] = event.target.value;
         setSet(updatedSet);
-        console.log(updatedSet);
     }
 
     function doCreate() {

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 const INITIAL_FLASHCARD = {
     flashcardId: 0,
+    flashcardSetId: 1,
     frontData: '',
     backData: '',
 };

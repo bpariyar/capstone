@@ -4,7 +4,7 @@ import Flashcard from './Flashcard';
 
 export default function Flashcards() {
     const pathname = window.location.pathname;
-    const segment = pathname.substring(pathname.lastIndexOf('/') + 1);
+    let segment = pathname.substring(pathname.lastIndexOf('/') + 1);
     const [cards, setCards] = useState();
 
     let navigate = useNavigate();

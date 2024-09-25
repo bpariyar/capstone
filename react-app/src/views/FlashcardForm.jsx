@@ -3,7 +3,9 @@ import { useEffect, useState } from 'react';
 
 const INITIAL_FLASHCARD = {
     flashcardId: 0,
-    flashcardSetId: 1,
+    flashcardSet: {
+        flashcardSetId: 2
+    },
     frontData: '',
     backData: '',
 };
@@ -95,7 +97,6 @@ export default function FlashcardForm() {
             });
     }
 
-
     function handleSubmit(event) {
         event.preventDefault();
         if (flashcard.flashcardId > 0) {
@@ -109,6 +110,7 @@ export default function FlashcardForm() {
         <div className='container'>
             <form onSubmit={handleSubmit}>
             <h1>{flashcard.flashcardId > 0 ? 'Update A Flashcard' : 'Add A Flashcard'}</h1>
+           
             <div className='mb-3'>
                     <label className='form-label' htmlFor='FrontData'>
                         Front Data

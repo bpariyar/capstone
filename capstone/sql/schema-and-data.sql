@@ -20,7 +20,7 @@ CREATE TABLE flashcard(
 
 
 insert into flashcard_set(flashcard_set_id, title) values 
-(1, "World History Midterm"),
+(1, "World History"),
 (2, "Spanish - Colors");
 
 insert into flashcard(flashcard_set_id, front_data, back_data) values

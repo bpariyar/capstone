@@ -29,7 +29,7 @@ public class FlashcardSetJdbcTemplateRepositoryTest {
     void shouldFindByFlashcardSetId() {
         FlashcardSet flashcardSet1 = repository.findByFlashcardSetId(1);
         assertEquals(flashcardSet1.getFlashcardSetId(), 1);
-        assertEquals(flashcardSet1.getTitle(), "World History Midterm");
+        assertEquals(flashcardSet1.getTitle(), "World History");
     }
 
     @Test

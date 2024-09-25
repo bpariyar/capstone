@@ -30,7 +30,7 @@ begin
 	alter table flashcard_set auto_increment = 1;
 
 	insert into flashcard_set(flashcard_set_id, title) values 
-	(1, "World History Midterm"),
+	(1, "World History"),
 	(2, "Spanish - Colors");
 
 	insert into flashcard(flashcard_set_id, front_data, back_data) values

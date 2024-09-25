@@ -10,10 +10,10 @@ export default function Flashcards() {
     const [x, setX] = useState(true);
     let [index, setIndex] = useState(1);
 
-    let navigate = useNavigate(); 
-    const routeChange = () =>{ 
-      let path = '/add'; 
-      navigate(path);
+    let navigate = useNavigate();
+    const routeChange = () => {
+        let path = '/add';
+        navigate(path);
     }
 
     useEffect(() => {
@@ -25,11 +25,9 @@ export default function Flashcards() {
 
     return (
         <>
-            <h1>Flashcards</h1>
-            <div className='mb-3'>
-            <button type="button"
-            onClick={routeChange}>Add a Flashcard</button>
-            </div>
+            <h1 style={{ paddingBottom: "10px" }}>
+                Flashcards
+            </h1>
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4">
                 {cards?.map(card =>
                     <div className="col" key={card.flashcardId}>
@@ -47,6 +45,10 @@ export default function Flashcards() {
                         </div>
                     </div>
                 )}
+            </div>
+            <div className='mb-3' style={{ paddingTop: "15px" }}>
+                <button type="button"
+                    onClick={routeChange}>Add a Flashcard</button>
             </div>
         </>
     );

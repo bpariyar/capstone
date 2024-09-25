@@ -6,10 +6,10 @@ export default function Sets() {
 
     const [sets, setSets] = useState();
 
-    let navigate = useNavigate(); 
-    const routeChange = () =>{ 
-      let path = '/sets/add'; 
-      navigate(path);
+    let navigate = useNavigate();
+    const routeChange = () => {
+        let path = '/sets/add';
+        navigate(path);
     }
 
     useEffect(() => {
@@ -23,8 +23,8 @@ export default function Sets() {
         <>
             <h1>Sets</h1>
             <div className='mb-3'>
-            <button type="button"
-            onClick={routeChange}>Add a Flashcard Set</button>
+                <button type="button"
+                    onClick={routeChange}>Add a Flashcard Set</button>
             </div>
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4">
                 {sets?.map(set => (

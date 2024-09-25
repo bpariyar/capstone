@@ -8,6 +8,7 @@ import Flashcards from './views/Flashcards';
 import FlashcardForm  from './views/FlashcardForm';
 import SetForm from './views/SetForm';
 import ConfirmDeleteSet from './views/ConfirmDeleteSet';
+import ConfirmDeleteFlashcard from './views/ConfirmDeleteFlashcard';
 
 function App() {
     return (
@@ -21,6 +22,9 @@ function App() {
                 <Route path={'/sets/add'} element={<SetForm />}/>
                 <Route path={'/sets/update/:flashcardSetId'} element={<SetForm />}/>
                 <Route path={'/sets/delete/:flashcardSetId'} element={<ConfirmDeleteSet />}/>
+                <Route path={'/add'} element={<FlashcardForm />}/>
+                <Route path={'/update/:flashcardId'} element={<FlashcardForm />}/>
+                <Route path={'/delete/:flashcardId'} element={<ConfirmDeleteFlashcard />}/>
             </Routes>
         </Router>
     )

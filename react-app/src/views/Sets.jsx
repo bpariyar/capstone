@@ -28,7 +28,7 @@ export default function Sets() {
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4">
                 {sets?.map(set => (
                     <div key={set.flashcardSetId}>
-                        <NavLink to={`/flashcard/cards/${set.flashcardSetId}`} key={set.flashcardSetId} >
+                        <NavLink to={`/flashcard/cards/${set.flashcardSetId}`} key={set.flashcardSetId} style={{ textDecoration: 'none' }} >
                             <div className="col" key={set.flashcardSetId}>
                                 <div className="card">
                                     <div className="card-body">

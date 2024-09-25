@@ -1,37 +1,15 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
 
-export default function Flashcards() {
-    const pathname = window.location.pathname;
-    const segment = pathname.substring(pathname.lastIndexOf('/') + 1);
+const Flashcard = ({card}) => {
 
-    const [cards, setCards] = useState();
     const [x, setX] = useState(true);
     let [index, setIndex] = useState(1);
-
-    let navigate = useNavigate(); 
-    const routeChange = () =>{ 
-      let path = '/add'; 
-      navigate(path);
-    }
-
-    useEffect(() => {
-        fetch('http://localhost:8080/flashcard/cards/' + segment)
-            .then(res => res.json())
-            .then(setCards)
-            .catch(console.error);
-    }, []);
-
     return (
         <>
-            <h1>Flashcards</h1>
-            <div className='mb-3'>
-            <button type="button"
-            onClick={routeChange}>Add a Flashcard</button>
-            </div>
+
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4">
-                {cards?.map(card =>
+
                     <div className="col" key={card.flashcardId}>
                         <div className="card">
                             <div className="card-body" onClick={() => { setX(!x); }}>
@@ -46,8 +24,11 @@ export default function Flashcards() {
                             </div>
                         </div>
                     </div>
-                )}
+  
             </div>
+ 
         </>
     );
 }
+
+export default Flashcard

@@ -3,10 +3,9 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
 export default function Sets() {
-
     const [sets, setSets] = useState();
-
     let navigate = useNavigate();
+
     const routeChange = () => {
         let path = '/sets/add';
         navigate(path);

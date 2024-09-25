@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import Flashcard from './Flashcard';
@@ -6,10 +5,7 @@ import Flashcard from './Flashcard';
 export default function Flashcards() {
     const pathname = window.location.pathname;
     const segment = pathname.substring(pathname.lastIndexOf('/') + 1);
-
     const [cards, setCards] = useState();
-    const [x, setX] = useState(true);
-    let [index, setIndex] = useState(1);
 
     let navigate = useNavigate();
     const routeChange = () => {

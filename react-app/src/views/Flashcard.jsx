@@ -15,7 +15,7 @@ const Flashcard = ({ card }) => {
                                 <h5 className="card-title">{card.backData}</h5>
                             }
                         </div>
-                        <div className="card-footer text-body-secondary text-center">
+                        <div>
                             <Link to={`/delete/${card.flashcardId}`} className="btn btn-danger me-2">Delete</Link>
                             <Link to={`/update/${card.flashcardId}`} className="btn btn-info">Edit</Link>
                         </div>

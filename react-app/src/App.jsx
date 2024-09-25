@@ -7,7 +7,7 @@ import Sets from './views/Sets';
 import Flashcards from './views/Flashcards';
 import FlashcardForm  from './views/FlashcardForm';
 import SetForm from './views/SetForm';
-import ConfirmDelete from './views/ConfirmDelete';
+import ConfirmDeleteSet from './views/ConfirmDeleteSet';
 
 function App() {
     return (
@@ -20,7 +20,7 @@ function App() {
                 <Route path={'/add'} element={<FlashcardForm />}/>
                 <Route path={'/sets/add'} element={<SetForm />}/>
                 <Route path={'/sets/update/:flashcardSetId'} element={<SetForm />}/>
-                <Route path={'/sets/delete/:flashcardSetId'} element={<ConfirmDelete />}/>
+                <Route path={'/sets/delete/:flashcardSetId'} element={<ConfirmDeleteSet />}/>
             </Routes>
         </Router>
     )

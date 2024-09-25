@@ -18,7 +18,7 @@ export default function ConfirmDelete() {
 
     useEffect(() => {
         if (flashcardSetId) {
-            fetch(`http://localhost:8080/flashcard/set/${set.flashcardSetId}`)
+            fetch(`http://localhost:8080/flashcard/set/${flashcardSetId}`)
                 .then(res => res.json())
                 .then(setSet)
                 .catch(console.error);
@@ -33,9 +33,7 @@ export default function ConfirmDelete() {
         <div>
             <h1>Delete Confirmation</h1>
             <p>Are you sure you want to delete this flashcard set? </p>
-            <ul>
-                <li>Title: {set.title}</li>
-            </ul>
+                <p>Title: {set.title}</p>
             <div>
                 <button onClick={handleDelete} className='btn btn-danger me-2'>
                     Delete

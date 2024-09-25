@@ -27,7 +27,7 @@ export default function SetForm() {
 
     function handleChange(event) {
         const updatedSet = { ...set };
-        updatedSet[event.target.name] = event.target.value;
+        updatedSet[event.target.title] = event.target.value;
         setSet(updatedSet);
         console.log(updatedSet);
     }
@@ -64,7 +64,7 @@ export default function SetForm() {
     }
 
     function doUpdate() {
-        fetch(`http://localhost:8080/flashcard/set/update/${set.flashcardSetId}`, {
+        fetch(`http://localhost:8080/flashcard/set/update/${set.id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

@@ -21,7 +21,7 @@ export default function Sets() {
 
     return (
         <>
-            <h1>Sets</h1>
+            <h1>Flashcard Sets</h1>
             <div className='mb-3'>
                 <button type="button"
                     onClick={routeChange}>Add a Flashcard Set</button>

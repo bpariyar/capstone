@@ -118,26 +118,28 @@ export default function FlashcardForm() {
                     <label className='form-label' htmlFor='FrontData'>
                         Front Data
                     </label>
-                    <input
+                    <textarea
                         className='form-control'
                         type='text'
                         id='frontData'
                         name='frontData'
                         value={flashcard.frontData}
                         onChange={handleChange}
+                        style={{margin: "auto", width: "325px"}}
                     />
                 </div>
                 <div className='mb-3'>
                     <label className='form-label' htmlFor='BackData'>
                         Back Data
                     </label>
-                    <input
+                    <textarea
                         className='form-control'
                         type='text'
                         id='backData'
                         name='backData'
                         value={flashcard.backData}
                         onChange={handleChange}
+                        style={{margin: "auto", width: "325px"}}
                     />
                 </div>
                 <div className='mb-3'>

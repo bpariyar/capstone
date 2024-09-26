@@ -118,6 +118,7 @@ export default function SetForm() {
                         name='title'
                         value={set.title}
                         onChange={handleChange}
+                        style={{margin: "auto", width: "325px"}}
                     />
                 </div>
                 <div className='mb-3'>

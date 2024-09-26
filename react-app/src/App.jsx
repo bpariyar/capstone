@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
-import Navbar from './components/NavBar';
+import NavBar from './components/NavBar';
 import Home from './views/Home';
 import Sets from './views/Sets';
 import Flashcards from './views/Flashcards';
@@ -12,7 +12,7 @@ import ConfirmDeleteFlashcard from './views/ConfirmDeleteFlashcard';
 function App() {
     return (
         <Router>
-            <Navbar />
+            <NavBar />
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/sets' element={<Sets />} />
